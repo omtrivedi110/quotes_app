@@ -1,6 +1,6 @@
 import 'dart:math';
-
 import 'package:db_miner/controller/api_controller.dart';
+import 'package:db_miner/helpers/db_helper.dart';
 import 'package:db_miner/modal/api_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,7 +10,7 @@ import '../component/img_lists.dart';
 class DetailPage extends StatelessWidget {
   DetailPage({super.key});
 
-  ApiController controller = Get.find();
+  ApiController controller = Get.find<ApiController>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,17 +33,35 @@ class DetailPage extends StatelessWidget {
               fit: BoxFit.fill,
             ),
             SizedBox(
-              height: s.height * 0.03,
+              height: s.height * 0.015,
             ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                "Category :- ${apiModal.category}",
-                style: const TextStyle(fontWeight: FontWeight.w400),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    "Category :- ${apiModal.category}",
+                    style: const TextStyle(fontWeight: FontWeight.w400),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    DBHelper.dbHelper.addliked(
+                        quotes: apiModal.quote,
+                        category: apiModal.category,
+                        author: apiModal.author);
+                    controller.getLiked();
+                  },
+                  child: const Text(
+                    "♡",
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ],
             ),
             SizedBox(
-              height: s.height * 0.03,
+              height: s.height * 0.015,
             ),
             Text(
               apiModal.quote,
@@ -52,29 +70,15 @@ class DetailPage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          // FloatingActionButton(
-          //   onPressed: () {},
-          //   child: const Text(
-          //     "❣️",
-          //     style: TextStyle(fontSize: 20),
-          //   ),
-          // ),
-          const SizedBox(
-            width: 10,
-          ),
-          FloatingActionButton(
-            onPressed: () {
-              controller.insertSaved(
-                  quotes: apiModal.quote,
-                  category: apiModal.category,
-                  author: apiModal.author);
-            },
-            child: const Icon(Icons.bookmark_add_outlined),
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          controller.insertSaved(
+            quotes: apiModal.quote,
+            category: apiModal.category,
+            author: apiModal.author,
+          );
+        },
+        child: const Icon(Icons.bookmark_add_outlined),
       ),
     );
   }

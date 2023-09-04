@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:db_miner/controller/api_controller.dart';
 import 'package:db_miner/modal/api_modal.dart';
 import 'package:db_miner/utils/path_utils.dart';
@@ -11,14 +9,19 @@ import 'package:get/get.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  ApiController controller = Get.put(ApiController());
+  ApiController controller = Get.find<ApiController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          TextButton(onPressed: () {}, child: const Text("💜")),
+          TextButton(
+            onPressed: () {
+              Get.toNamed(MyRoutes.likedpage);
+            },
+            child: const Text("💜"),
+          ),
           IconButton(
             onPressed: () {
               Get.toNamed(MyRoutes.quotesSaved);
@@ -50,7 +53,8 @@ class HomePage extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       controller.getByCategory(
-                          category: controller.categories[index]);
+                        category: controller.categories[index],
+                      );
                     },
                     child: Text(
                       controller.categories[index],
@@ -74,9 +78,6 @@ class HomePage extends StatelessWidget {
                         onTap: () {
                           Get.toNamed(MyRoutes.detail, arguments: apimodal);
                         },
-                        leading: CircleAvatar(
-                          child: Text("${index + 1}"),
-                        ),
                         title: Text(
                           apimodal.quote,
                           maxLines: 2,

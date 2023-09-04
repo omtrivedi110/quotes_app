@@ -3,6 +3,7 @@ import 'package:db_miner/modal/api_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class Saved_quotes extends StatelessWidget {
   Saved_quotes({super.key});
 
@@ -25,7 +26,9 @@ class Saved_quotes extends StatelessWidget {
               return Card(
                 child: ListTile(
                   leading: CircleAvatar(
-                    child: Text("${index + 1}"),
+                    child: Text(
+                      "${index + 1}",
+                    ),
                   ),
                   title: Text(
                     apiModal.quote,
