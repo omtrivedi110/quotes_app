@@ -40,6 +40,10 @@ dependencies:
   sqflite:
   animated_splash_screen:
   path:
+  get_storage:
+  shared_preferences:
+  flutter_tts: ^3.8.1
+  tcard:
 
 
 dev_dependencies:

@@ -1,16 +1,19 @@
 import 'dart:math';
+import 'dart:developer' as dev;
 import 'package:db_miner/controller/api_controller.dart';
-import 'package:db_miner/helpers/db_helper.dart';
+import 'package:db_miner/controller/tts_controller.dart';
 import 'package:db_miner/modal/api_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../component/img_lists.dart';
 
+// ignore: must_be_immutable
 class DetailPage extends StatelessWidget {
   DetailPage({super.key});
 
   ApiController controller = Get.find<ApiController>();
+
+  TTsController tTsController = Get.put(TTsController());
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +50,7 @@ class DetailPage extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    DBHelper.dbHelper.addliked(
+                    controller.insertLiked(
                         quotes: apiModal.quote,
                         category: apiModal.category,
                         author: apiModal.author);
@@ -67,16 +70,38 @@ class DetailPage extends StatelessWidget {
               apiModal.quote,
               style: const TextStyle(fontWeight: FontWeight.w600),
             ),
+            Row(
+              children: [
+                IconButton(
+                    onPressed: () {
+                      tTsController.speak(text: apiModal.quote);
+                    },
+                    icon: const Icon(Icons.volume_up_outlined)),
+                IconButton(
+                    onPressed: () {
+                      tTsController.stop();
+                    },
+                    icon: const Icon(Icons.volume_off_outlined)),
+              ],
+            )
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          // ignore: invalid_use_of_protected_member
+          if (controller.allcategories.value.contains(apiModal.category)) {
+            Get.snackbar("Already Added", "Can't add Second Time");
+          } else {
+            controller.allcategories.value.add(apiModal.category);
+            dev.log("${controller.allcategories.value.length}");
+          }
           controller.insertSaved(
             quotes: apiModal.quote,
             category: apiModal.category,
             author: apiModal.author,
           );
+          controller.getData();
         },
         child: const Icon(Icons.bookmark_add_outlined),
       ),

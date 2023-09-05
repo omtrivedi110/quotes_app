@@ -1,13 +1,13 @@
 class LikeModal {
-  final int qtLId;
-  final String qtLQuotes;
-  final String qtLCategory;
-  final String qtLauthor;
+  final int Id;
+  final String FaQuotes;
+  final String FaAuthor;
+  final String FaCategory;
 
-  LikeModal(this.qtLId, this.qtLQuotes, this.qtLCategory, this.qtLauthor);
+  LikeModal(this.Id, this.FaQuotes, this.FaAuthor, this.FaCategory);
 
   factory LikeModal.fromMap({required Map data}) {
-    return LikeModal(data['qtLId'], data['qtLQuotes'], data['qtLCategory'],
-        data['qtLauthor']);
+    return LikeModal(
+        data['Id'], data['FaQuotes'], data['FaAuthor'], data['FaCategory']);
   }
 }

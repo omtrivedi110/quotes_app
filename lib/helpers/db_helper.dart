@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'package:db_miner/modal/api_modal.dart';
 import 'package:db_miner/modal/likedmodal.dart';
-import 'package:get/get.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -77,6 +76,7 @@ class DBHelper {
   Future<List<LikeModal>?> displayLiked() async {
     String sql = "SELECT * FROM $likedTable";
     List data = await database.rawQuery(sql);
+    log(data.toString());
     List<LikeModal> alldata =
         data.map((e) => LikeModal.fromMap(data: e)).toList();
     return alldata;

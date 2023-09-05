@@ -1,13 +1,27 @@
+import 'dart:developer';
 import 'package:db_miner/controller/api_controller.dart';
 import 'package:db_miner/modal/api_modal.dart';
+import 'package:db_miner/utils/route_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable
-class Saved_quotes extends StatelessWidget {
+class Saved_quotes extends StatefulWidget {
   Saved_quotes({super.key});
 
+  @override
+  State<Saved_quotes> createState() => _Saved_quotesState();
+}
+
+class _Saved_quotesState extends State<Saved_quotes> {
   ApiController apiController = Get.find();
+
+  @override
+  void initState() {
+    super.initState();
+    log("GetData");
+    apiController.getData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,29 +30,45 @@ class Saved_quotes extends StatelessWidget {
         title: const Text("Saved Quotes"),
         centerTitle: true,
       ),
-      body: Obx(() {
-        return ListView.builder(
-            // ignore: invalid_use_of_protected_member
-            itemCount: apiController.savedquote.value.length,
-            itemBuilder: (context, index) {
-              // ignore: invalid_use_of_protected_member
-              ApiModal apiModal = apiController.savedquote.value[index];
-              return Card(
-                child: ListTile(
-                  leading: CircleAvatar(
-                    child: Text(
-                      "${index + 1}",
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Obx(
+          () {
+            return GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                childAspectRatio: 2 / 3,
+                crossAxisCount: 2,
+                crossAxisSpacing: 5,
+                mainAxisSpacing: 5,
+              ),
+              itemCount: apiController.allcategories.value.length,
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () => Get.toNamed(MyRoutes.savedDetail,
+                    arguments: apiController.allcategories.value[index]),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.primaries[index % 18],
+                        Colors.primaries[(index + 1) % 18],
+                      ],
                     ),
                   ),
-                  title: Text(
-                    apiModal.quote,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
+                  alignment: Alignment.center,
+                  child: Text(
+                    apiController.allcategories.value[index],
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
-              );
-            });
-      }),
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 }

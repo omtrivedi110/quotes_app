@@ -4,4 +4,5 @@ class MyRoutes {
   static String detail = "/detail";
   static String quotesSaved = "/saved";
   static String likedpage = "/likedpage";
+  static String savedDetail = "/savedDetail";
 }

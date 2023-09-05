@@ -4,14 +4,23 @@ import 'package:db_miner/helpers/api_helper.dart';
 import 'package:db_miner/helpers/db_helper.dart';
 import 'package:db_miner/modal/api_modal.dart';
 import 'package:db_miner/modal/likedmodal.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class ApiController extends GetxController {
   RxList<ApiModal> quote = <ApiModal>[].obs;
 
+  RxInt index = (-1).obs;
+
+  RxList<String> allcategories = <String>[].obs;
+
   RxList<ApiModal> savedquote = <ApiModal>[].obs;
 
   RxList<LikeModal> likedquote = <LikeModal>[].obs;
+
+  PageController pageController = PageController();
+
+  RxInt pageindex = 0.obs;
 
   List<String> categories = [
     "love",
@@ -32,6 +41,12 @@ class ApiController extends GetxController {
     getApi();
   }
 
+  changePage({required int index2}) {
+    pageController.animateToPage(index2,
+        duration: const Duration(milliseconds: 600), curve: Curves.ease);
+    pageindex(index2);
+  }
+
   insertSaved(
       {required String quotes,
       required String category,
@@ -46,12 +61,10 @@ class ApiController extends GetxController {
       {required String quotes,
       required String category,
       required String author}) async {
-    int a = await DBHelper.dbHelper
+    await DBHelper.dbHelper
         .addliked(quotes: quotes, category: category, author: author);
-    log("$a");
-    a == 1
-        ? Get.snackbar("Updated", "Liked !!")
-        : Get.snackbar("Sorry", "We will fix IT");
+
+    Get.snackbar("Updated", "Liked !!");
   }
 
   getLiked() async {
