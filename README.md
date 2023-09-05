@@ -1,5 +1,21 @@
 DB Miner 
 
+
+
+
+https://github.com/omtrivedi110/db_miner/assets/131134704/87aaf0cd-c8db-43a9-b1e1-885887a3c0f9
+
+
+<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/145e9d13-3dc1-4e71-8725-ba6900aa43cb" height = 500>
+<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/a7dc6232-5081-4630-8989-4709416a383f" height = 500>
+<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/0c958378-ed2e-48b8-b5cf-5c709d9385cd" height = 500>
+<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/35a392b5-2262-44d9-85a9-a0d72d2de8ca" height = 500>
+<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/64757d43-35d1-4fc3-95bf-f8e1c99d3b60" height = 500>
+<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/2c1bcb93-3fb0-443d-b309-abe271738581" height = 500>
+
+
+
+
 Project Description:
 "Quotes" is a feature-rich mobile application developed using Flutter, incorporating concepts
 such as SQLite Database, Animation, API Calling, and Local JSON Bank. The app provides
