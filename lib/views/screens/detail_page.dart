@@ -6,6 +6,7 @@ import 'package:db_miner/modal/api_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../component/img_lists.dart';
+import 'package:share_extend/share_extend.dart';
 
 // ignore: must_be_immutable
 class DetailPage extends StatelessWidget {
@@ -25,6 +26,25 @@ class DetailPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(apiModal.author),
         centerTitle: true,
+        actions: [
+          PopupMenuButton(itemBuilder: (context) {
+            return [
+              PopupMenuItem(
+                  child: TextButton(
+                onPressed: () {
+                  ShareExtend.share(apiModal.quote, apiModal.author,
+                      extraText: apiModal.category);
+                },
+                child: const Text("Share"),
+              )),
+              PopupMenuItem(
+                  child: TextButton(
+                onPressed: () {},
+                child: const Text("Set Wallpaper"),
+              )),
+            ];
+          })
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -51,9 +71,10 @@ class DetailPage extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     controller.insertLiked(
-                        quotes: apiModal.quote,
-                        category: apiModal.category,
-                        author: apiModal.author);
+                      quotes: apiModal.quote,
+                      category: apiModal.category,
+                      author: apiModal.author,
+                    );
                     controller.getLiked();
                   },
                   child: const Text(
@@ -68,7 +89,7 @@ class DetailPage extends StatelessWidget {
             ),
             Text(
               apiModal.quote,
-              style: const TextStyle(fontWeight: FontWeight.w600),
+              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
             ),
             Row(
               children: [

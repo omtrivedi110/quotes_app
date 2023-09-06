@@ -36,7 +36,15 @@ class Home extends StatelessWidget {
                 itemBuilder: (context, index) {
                   // ignore: invalid_use_of_protected_member
                   ApiModal apimodal = controller.quote.value[index];
-                  return Card(
+                  return Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.primaries[index % 18],
+                          Colors.primaries[(index + 1) % 18],
+                        ],
+                      ),
+                    ),
                     child: ListTile(
                       onTap: () {
                         Get.toNamed(MyRoutes.detail, arguments: apimodal);

@@ -44,6 +44,7 @@ dependencies:
   shared_preferences:
   flutter_tts: ^3.8.1
   tcard:
+  share_extend:
 
 
 dev_dependencies:

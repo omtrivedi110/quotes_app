@@ -19,7 +19,6 @@ class _Saved_quotesState extends State<Saved_quotes> {
   @override
   void initState() {
     super.initState();
-    log("GetData");
     apiController.getData();
   }
 
