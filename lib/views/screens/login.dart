@@ -16,14 +16,14 @@ class MyLoginPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Hello world"),
       ),
-      // body: FlutterLogin(
-      //   onLogin: (val) {
-      //     Get.toNamed(
-      //       MyRoutes.home,
-      //     );
-      //   },
-      //   onRecoverPassword: (val) {},
-      // ),
+       body: FlutterLogin(
+         onLogin: (val) {
+           Get.toNamed(
+             MyRoutes.home,
+           );
+         },
+         onRecoverPassword: (val) {},
+       ),
     );
   }
 }
