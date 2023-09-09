@@ -3,7 +3,11 @@ DB Miner
 
 
 
-https://github.com/omtrivedi110/db_miner/assets/131134704/87aaf0cd-c8db-43a9-b1e1-885887a3c0f9
+https://github.com/omtrivedi110/db_miner/assets/131134704/dd2146a3-8ddf-4959-9aa2-e53269c82eab
+
+
+
+
 
 
 <img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/145e9d13-3dc1-4e71-8725-ba6900aa43cb" height = 500>
