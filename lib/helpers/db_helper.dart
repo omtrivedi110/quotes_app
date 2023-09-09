@@ -76,7 +76,6 @@ class DBHelper {
   Future<List<LikeModal>?> displayLiked() async {
     String sql = "SELECT * FROM $likedTable";
     List data = await database.rawQuery(sql);
-    log(data.toString());
     List<LikeModal> alldata =
         data.map((e) => LikeModal.fromMap(data: e)).toList();
     return alldata;
@@ -86,7 +85,7 @@ class DBHelper {
     String query = "SELECT * FROM $quotesTable";
 
     List quotes = await database.rawQuery(query);
-
+    log(quotes.toString());
     List<ApiModal> allQuotes =
         quotes.map((e) => ApiModal.fromApi(data: e)).toList();
 

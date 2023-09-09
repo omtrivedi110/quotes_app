@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:db_miner/controller/api_controller.dart';
 import 'package:db_miner/modal/api_modal.dart';
+import 'package:db_miner/utils/back_utils.dart';
 import 'package:db_miner/utils/route_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,7 +27,7 @@ class _Saved_quotesState extends State<Saved_quotes> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Saved Quotes"),
+        title: const Text("Saved Quotes Category"),
         centerTitle: true,
       ),
       body: Padding(
@@ -40,9 +41,11 @@ class _Saved_quotesState extends State<Saved_quotes> {
                 crossAxisSpacing: 5,
                 mainAxisSpacing: 5,
               ),
+              // ignore: invalid_use_of_protected_member
               itemCount: apiController.allcategories.value.length,
               itemBuilder: (context, index) => GestureDetector(
                 onTap: () => Get.toNamed(MyRoutes.savedDetail,
+                    // ignore: invalid_use_of_protected_member
                     arguments: apiController.allcategories.value[index]),
                 child: Container(
                   decoration: BoxDecoration(
@@ -56,6 +59,7 @@ class _Saved_quotesState extends State<Saved_quotes> {
                   ),
                   alignment: Alignment.center,
                   child: Text(
+                    // ignore: invalid_use_of_protected_member
                     apiController.allcategories.value[index],
                     style: const TextStyle(
                       fontSize: 24,

@@ -10,23 +10,25 @@ import 'package:db_miner/views/screens/saved_quotes.dart';
 import 'package:db_miner/views/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DBHelper.dbHelper.initDB();
   ApiController controller = Get.put(ApiController());
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  StorageController storageController =
-      Get.put(StorageController(pref: sharedPreferences));
-  storageController.setOne();
-  // await GetStorage.init();
+  // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  StorageController storageController = Get.put(StorageController());
+  // storageController.setOne();
+  await GetStorage.init();
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  StorageController controller = Get.find<StorageController>();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.splash,
+      initialRoute: controller.isone ? MyRoutes.home : MyRoutes.splash,
       getPages: [
         GetPage(name: MyRoutes.home, page: () => HomePage()),
         GetPage(name: MyRoutes.splash, page: () => SplashScreen()),

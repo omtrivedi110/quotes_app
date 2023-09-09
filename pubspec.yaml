@@ -45,6 +45,8 @@ dependencies:
   flutter_tts: ^3.8.1
   tcard:
   share_extend:
+#  flutter_login: ^4.2.1
+#  async_wallpaper: ^2.0.3
 
 
 dev_dependencies:

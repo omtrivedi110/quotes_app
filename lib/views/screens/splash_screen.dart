@@ -13,6 +13,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller.setOne();
     Size s = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -30,7 +31,7 @@ class SplashScreen extends StatelessWidget {
                   scale: 1.5,
                   child: Image.asset(imgpath + Paths.logo),
                 ),
-                nextScreen: controller.isone ? HomePage() : SplashScreen(),
+                nextScreen: HomePage(),
                 duration: 3000,
               ),
             ),

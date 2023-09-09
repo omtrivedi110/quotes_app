@@ -60,9 +60,7 @@ class ApiController extends GetxController {
       {required String quotes,
       required String category,
       required String author}) async {
-    await DBHelper.dbHelper
-        .addliked(quotes: quotes, category: category, author: author);
-
+    log("${await DBHelper.dbHelper.addliked(quotes: quotes, category: category, author: author)}");
     Get.snackbar("Updated", "Liked !!");
   }
 

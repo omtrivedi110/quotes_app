@@ -12,56 +12,64 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () {
-        return Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: TextField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Obx(
+        () {
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: TextField(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (val) {
+                    controller.getByCategory(
+                      category: val,
+                    );
+                  },
                 ),
-                onChanged: (val) {
-                  controller.getByCategory(
-                    category: val,
-                  );
-                },
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                // ignore: invalid_use_of_protected_member
-                itemCount: controller.quote.value.length,
-                itemBuilder: (context, index) {
+              Expanded(
+                child: ListView.builder(
                   // ignore: invalid_use_of_protected_member
-                  ApiModal apimodal = controller.quote.value[index];
-                  return Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.primaries[index % 18],
-                          Colors.primaries[(index + 1) % 18],
-                        ],
+                  itemCount: controller.quote.value.length,
+                  itemBuilder: (context, index) {
+                    // ignore: invalid_use_of_protected_member
+                    ApiModal apimodal = controller.quote.value[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.primaries[index % 18],
+                              Colors.primaries[(index + 1) % 18],
+                            ],
+                          ),
+                        ),
+                        child: ListTile(
+                          onTap: () {
+                            Get.toNamed(MyRoutes.detail, arguments: apimodal);
+                          },
+                          title: Text(
+                            apimodal.quote,
+                            maxLines: 4,
+                            style: const TextStyle(color: Colors.white),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                       ),
-                    ),
-                    child: ListTile(
-                      onTap: () {
-                        Get.toNamed(MyRoutes.detail, arguments: apimodal);
-                      },
-                      title: Text(
-                        apimodal.quote,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
-        );
-      },
+            ],
+          );
+        },
+      ),
     );
   }
 }

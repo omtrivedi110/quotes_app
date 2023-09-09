@@ -18,33 +18,33 @@ class SavedDetail extends StatelessWidget {
     Size s = MediaQuery.of(context).size;
     String quote = ModalRoute.of(context)!.settings.arguments as String;
     List<Widget> card =
+        // ignore: invalid_use_of_protected_member
         List.generate(apiController.savedquote.value.length, (index) {
+      // ignore: invalid_use_of_protected_member
       ApiModal apiModal = apiController.savedquote.value[index];
       if (apiModal.category == quote) {
-        log("message");
         return Container(
+          padding: const EdgeInsets.all(3),
           height: s.height * 0.7,
           alignment: Alignment.center,
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
             image: DecorationImage(
-              image: NetworkImage(
-                img[index % 4],
-              ),
-            ),
+                image: NetworkImage(
+                  img[index % 4],
+                ),
+                fit: BoxFit.cover),
           ),
           width: double.infinity,
-          child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Text(
-              apiModal.quote,
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 3,
+          child: Text(
+            apiModal.quote,
+            style: const TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
             ),
+            overflow: TextOverflow.ellipsis,
+            maxLines: 3,
           ),
         );
       } else {
@@ -85,7 +85,9 @@ class SavedDetail extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Center(
-          child: TCard(cards: card),
+          child: TCard(
+            cards: card,
+          ),
         ),
       ),
     );
