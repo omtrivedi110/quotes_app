@@ -1,27 +1,10 @@
-DB Miner 
+<div>
+  
+ # **DB Miner**
+</div>
 
-
-
-
-https://github.com/omtrivedi110/db_miner/assets/131134704/dd2146a3-8ddf-4959-9aa2-e53269c82eab
-
-
-
-
-
-
-<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/145e9d13-3dc1-4e71-8725-ba6900aa43cb" height = 500>
-<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/a7dc6232-5081-4630-8989-4709416a383f" height = 500>
-<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/0c958378-ed2e-48b8-b5cf-5c709d9385cd" height = 500>
-<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/35a392b5-2262-44d9-85a9-a0d72d2de8ca" height = 500>
-<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/64757d43-35d1-4fc3-95bf-f8e1c99d3b60" height = 500>
-<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/2c1bcb93-3fb0-443d-b309-abe271738581" height = 500>
-
-
-
-
-Project Description:
-"Quotes" is a feature-rich mobile application developed using Flutter, incorporating concepts
+**Project Description:**
+<p>"Quotes" is a feature-rich mobile application developed using Flutter, incorporating concepts
 such as SQLite Database, Animation, API Calling, and Local JSON Bank. The app provides
 users with a diverse collection of inspirational quotes, empowering them with personalized
 features and a visually appealing interface.
@@ -30,9 +13,10 @@ and motivation. By incorporating SQLite Database, Animation, API Calling, Local 
 fetching and saving quotes, category-wise organization, light and dark themes, splash screen,
 detailed quote screens, random background images and font families, quote wallpaper creation,
 and setting device wallpapers, the app offers a comprehensive solution for users to discover and
-engage with uplifting quotes that resonate with them.
+engage with uplifting quotes that resonate with them.</p>
 
-Project Objectives:
+##
+**Project Objectives:**
 
 - SQLite Database: The app utilizes SQLite Database to efficiently store and manage the quotes.
 Quotes fetched from the Local JSON Bank or API are inserted into a table, enabling seamless
@@ -68,6 +52,26 @@ information and options for customization. Users can explore the quote's content
 background image, choose a random font family, copy and share the quote as a wallpaper, or
 even set it as their device wallpaper.
 
-Project Technologies:
+##
+**Project Technologies:**
 - Dart language
 - Flutter framework with MVC and Provider architecture
+
+##
+**Video**
+
+https://github.com/omtrivedi110/db_miner/assets/131134704/dd2146a3-8ddf-4959-9aa2-e53269c82eab
+
+
+##
+**Screen shot**
+
+
+<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/145e9d13-3dc1-4e71-8725-ba6900aa43cb" height = 500>
+<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/a7dc6232-5081-4630-8989-4709416a383f" height = 500>
+<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/0c958378-ed2e-48b8-b5cf-5c709d9385cd" height = 500>
+<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/35a392b5-2262-44d9-85a9-a0d72d2de8ca" height = 500>
+<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/64757d43-35d1-4fc3-95bf-f8e1c99d3b60" height = 500>
+<img src = "https://github.com/omtrivedi110/db_miner/assets/131134704/2c1bcb93-3fb0-443d-b309-abe271738581" height = 500>
+
+
